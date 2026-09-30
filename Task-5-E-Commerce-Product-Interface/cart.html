@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Your Cart | DinoBuy</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        html{
+            scroll-behavior:smooth;
+        }
+
+        body{
+            font-family:Arial, sans-serif;
+            background:#f6f9f7;
+            color:#172536;
+        }
+
+        a{
+            text-decoration:none;
+            color:inherit;
+        }
+
+        button{
+            font-family:inherit;
+        }
+
+        .navbar{
+            width:100%;
+            background:#fff;
+            border-bottom:1px solid #e8eeea;
+            position:sticky;
+            top:0;
+            z-index:100;
+        }
+
+        .nav-container{
+            max-width:1200px;
+            margin:auto;
+            padding:14px 24px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:25px;
+        }
+
+        .logo{
+            display:flex;
+            align-items:center;
+            gap:9px;
+        }
+
+        .logo img{
+            width:48px;
+            height:48px;
+            object-fit:contain;
+        }
+
+        .logo-text{
+            display:flex;
+            flex-direction:column;
+        }
+
+        .logo-main{
+            font-size:21px;
+            font-weight:800;
+            line-height:1;
+            color:#111827;
+        }
+
+        .logo-main span{
+            color:#16a34a;
+        }
+
+        .logo-text small{
+            margin-top:4px;
+            font-size:7px;
+            font-weight:500;
+            color:#7d8b84;
+            white-space:nowrap;
+        }
+
+        .nav-links{
+            display:flex;
+            align-items:center;
+            gap:28px;
+            font-size:14px;
+            font-weight:600;
+        }
+
+        .nav-links a{
+            color:#44504a;
+            transition:.2s;
+        }
+
+        .nav-links a:hover{
+            color:#16a34a;
+        }
+
+        .cart-link{
+            background:#16a34a;
+            color:#fff !important;
+            padding:10px 17px;
+            border-radius:9px;
+        }
+
+        .cart-hero{
+            background:linear-gradient(135deg,#effaf2,#f7faf8);
+            padding:65px 20px 55px;
+            text-align:center;
+        }
+
+        .cart-tag{
+            display:inline-block;
+            background:#dcfce7;
+            color:#15803d;
+            padding:7px 15px;
+            border-radius:30px;
+            font-size:12px;
+            font-weight:700;
+            margin-bottom:15px;
+        }
+
+        .cart-hero h1{
+            font-size:42px;
+            margin-bottom:10px;
+        }
+
+        .cart-hero h1 span{
+            color:#16a34a;
+        }
+
+        .cart-hero p{
+            color:#68756e;
+            font-size:15px;
+        }
+
+        .cart-container{
+            max-width:1200px;
+            margin:auto;
+            padding:55px 24px 85px;
+        }
+
+        .cart-layout{
+            display:grid;
+            grid-template-columns:1fr 360px;
+            gap:28px;
+            align-items:start;
+        }
+
+        .cart-products{
+            background:#fff;
+            border:1px solid #e8eeea;
+            border-radius:18px;
+            overflow:hidden;
+        }
+
+        .cart-header{
+            padding:22px 25px;
+            border-bottom:1px solid #edf1ee;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        .cart-header h2{
+            font-size:20px;
+        }
+
+        .cart-header span{
+            color:#7a857f;
+            font-size:13px;
+        }
+
+        .cart-item{
+            display:grid;
+            grid-template-columns:100px 1fr auto;
+            gap:20px;
+            padding:24px;
+            border-bottom:1px solid #edf1ee;
+            align-items:center;
+        }
+
+        .cart-item:last-child{
+            border-bottom:none;
+        }
+
+        .cart-product-image{
+            width:100px;
+            height:100px;
+            background:#f3f7f4;
+            border-radius:14px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:48px;
+        }
+
+        .cart-product-info h3{
+            font-size:16px;
+            margin-bottom:7px;
+        }
+
+        .cart-category{
+            color:#16a34a;
+            font-size:11px;
+            font-weight:700;
+            text-transform:uppercase;
+            letter-spacing:.5px;
+        }
+
+        .cart-rating{
+            color:#f59e0b;
+            font-size:12px;
+            margin:8px 0;
+        }
+
+        .cart-price{
+            font-weight:800;
+            font-size:17px;
+        }
+
+        .cart-old-price{
+            color:#9aa39e;
+            text-decoration:line-through;
+            font-size:12px;
+            margin-left:6px;
+        }
+
+        .cart-actions{
+            display:flex;
+            align-items:center;
+            justify-content:flex-end;
+            gap:15px;
+        }
+
+        .quantity-box{
+            display:flex;
+            align-items:center;
+            border:1px solid #dfe7e2;
+            border-radius:8px;
+            overflow:hidden;
+        }
+
+        .quantity-box button{
+            width:32px;
+            height:32px;
+            border:none;
+            background:#f5f8f6;
+            cursor:pointer;
+            font-size:16px;
+            color:#34433b;
+        }
+
+        .quantity-box button:hover{
+            background:#dcfce7;
+            color:#15803d;
+        }
+
+        .quantity-box span{
+            width:34px;
+            text-align:center;
+            font-size:13px;
+            font-weight:700;
+        }
+
+        .remove-btn{
+            border:none;
+            background:transparent;
+            color:#ef4444;
+            cursor:pointer;
+            font-size:12px;
+            font-weight:600;
+        }
+
+        .remove-btn:hover{
+            text-decoration:underline;
+        }
+
+        .summary{
+            background:#fff;
+            border:1px solid #e8eeea;
+            border-radius:18px;
+            padding:25px;
+            position:sticky;
+            top:90px;
+        }
+
+        .summary h2{
+            font-size:20px;
+            margin-bottom:22px;
+        }
+
+        .summary-row{
+            display:flex;
+            justify-content:space-between;
+            margin-bottom:16px;
+            font-size:14px;
+            color:#657169;
+        }
+
+        .summary-row strong{
+            color:#172536;
+        }
+
+        .discount-value{
+            color:#16a34a !important;
+        }
+
+        .free-shipping{
+            color:#16a34a;
+            font-weight:700;
+        }
+
+        .summary-divider{
+            height:1px;
+            background:#edf1ee;
+            margin:20px 0;
+        }
+
+        .total-row{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:22px;
+        }
+
+        .total-row span{
+            font-weight:700;
+        }
+
+        .total-price{
+            font-size:25px;
+            color:#172536;
+        }
+
+        .checkout-btn{
+            width:100%;
+            border:none;
+            background:#16a34a;
+            color:#fff;
+            padding:14px;
+            border-radius:10px;
+            font-size:15px;
+            font-weight:700;
+            cursor:pointer;
+            transition:.2s;
+        }
+
+        .checkout-btn:hover{
+            background:#15803d;
+            transform:translateY(-1px);
+        }
+
+        .continue-shopping{
+            display:block;
+            text-align:center;
+            margin-top:16px;
+            color:#16a34a;
+            font-size:13px;
+            font-weight:700;
+        }
+
+        .secure-box{
+            margin-top:20px;
+            padding:14px;
+            background:#f4faf5;
+            border-radius:10px;
+            color:#607067;
+            font-size:11px;
+            line-height:1.6;
+            text-align:center;
+        }
+
+        .empty-cart{
+            background:#fff;
+            border:1px solid #e8eeea;
+            border-radius:18px;
+            padding:80px 25px;
+            text-align:center;
+            display:none;
+        }
+
+        .empty-icon{
+            width:85px;
+            height:85px;
+            background:#dcfce7;
+            border-radius:50%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:42px;
+            margin:0 auto 20px;
+        }
+
+        .empty-cart h2{
+            font-size:25px;
+            margin-bottom:10px;
+        }
+
+        .empty-cart p{
+            color:#707b75;
+            font-size:14px;
+            margin-bottom:25px;
+        }
+
+        .shop-btn{
+            display:inline-block;
+            background:#16a34a;
+            color:#fff;
+            padding:12px 23px;
+            border-radius:9px;
+            font-size:13px;
+            font-weight:700;
+        }
+
+        .site-footer{
+            background:#172536;
+            color:#dce5df;
+        }
+
+        .footer-top{
+            text-align:center;
+            border-bottom:1px solid rgba(255,255,255,.08);
+        }
+
+        .back-to-top{
+            display:block;
+            padding:16px;
+            color:#fff;
+            font-size:13px;
+        }
+
+        .footer-main{
+            max-width:1200px;
+            margin:auto;
+            padding:55px 25px;
+            display:grid;
+            grid-template-columns:1.5fr repeat(4,1fr);
+            gap:35px;
+        }
+
+        .footer-logo{
+            display:flex;
+            align-items:center;
+            gap:10px;
+            margin-bottom:15px;
+        }
+
+        .footer-logo img{
+            width:45px;
+            height:45px;
+            object-fit:contain;
+        }
+
+        .footer-logo strong{
+            display:block;
+            font-size:21px;
+            color:#fff;
+        }
+
+        .footer-logo strong span{
+            color:#4ade80;
+        }
+
+        .footer-logo small{
+            font-size:8px;
+            color:#9ba9a2;
+        }
+
+        .footer-brand p{
+            color:#9ba9a2;
+            font-size:13px;
+            line-height:1.7;
+            max-width:250px;
+        }
+
+        .footer-column{
+            display:flex;
+            flex-direction:column;
+            gap:11px;
+        }
+
+        .footer-column h3{
+            color:#fff;
+            font-size:14px;
+            margin-bottom:8px;
+        }
+
+        .footer-column a{
+            color:#9ba9a2;
+            font-size:13px;
+            transition:.2s;
+        }
+
+        .footer-column a:hover{
+            color:#4ade80;
+        }
+
+        .footer-middle{
+            border-top:1px solid rgba(255,255,255,.08);
+            border-bottom:1px solid rgba(255,255,255,.08);
+        }
+
+        .footer-middle-content{
+            max-width:1200px;
+            margin:auto;
+            padding:25px;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            gap:25px;
+        }
+
+        .footer-logo-bottom{
+            display:flex;
+            align-items:center;
+            gap:9px;
+        }
+
+        .footer-logo-bottom img{
+            width:40px;
+            height:40px;
+            object-fit:contain;
+        }
+
+        .footer-logo-bottom span{
+            font-size:20px;
+            font-weight:800;
+            color:#fff;
+        }
+
+        .footer-logo-bottom span span{
+            color:#4ade80;
+        }
+
+        .footer-options{
+            display:flex;
+            gap:10px;
+        }
+
+        .footer-options button{
+            background:transparent;
+            color:#dce5df;
+            border:1px solid #42504b;
+            padding:9px 15px;
+            border-radius:7px;
+        }
+
+        .footer-bottom{
+            max-width:1200px;
+            margin:auto;
+            padding:22px 25px;
+            display:flex;
+            justify-content:space-between;
+            gap:20px;
+            flex-wrap:wrap;
+        }
+
+        .footer-bottom-links{
+            display:flex;
+            gap:18px;
+            flex-wrap:wrap;
+        }
+
+        .footer-bottom a,
+        .footer-bottom p{
+            color:#8e9b95;
+            font-size:11px;
+        }
+
+        @media(max-width:900px){
+            .cart-layout{
+                grid-template-columns:1fr;
+            }
+
+            .summary{
+                position:static;
+            }
+
+            .footer-main{
+                grid-template-columns:repeat(2,1fr);
+            }
+
+            .footer-brand{
+                grid-column:1/-1;
+            }
+        }
+
+        @media(max-width:650px){
+            .nav-container{
+                padding:12px 16px;
+            }
+
+            .nav-links{
+                gap:10px;
+                font-size:12px;
+            }
+
+            .logo img{
+                width:42px;
+                height:42px;
+            }
+
+            .logo-main{
+                font-size:18px;
+            }
+
+            .logo-text small{
+                display:none;
+            }
+
+            .nav-links a:not(.cart-link){
+                display:none;
+            }
+
+            .cart-link{
+                padding:8px 12px;
+            }
+
+            .cart-hero{
+                padding:50px 20px 45px;
+            }
+
+            .cart-hero h1{
+                font-size:34px;
+            }
+
+            .cart-container{
+                padding:35px 15px 60px;
+            }
+
+            .cart-header{
+                padding:18px;
+            }
+
+            .cart-item{
+                grid-template-columns:70px 1fr;
+                gap:14px;
+                padding:18px;
+            }
+
+            .cart-product-image{
+                width:70px;
+                height:70px;
+                font-size:34px;
+            }
+
+            .cart-product-info h3{
+                font-size:14px;
+            }
+
+            .cart-actions{
+                grid-column:1/-1;
+                justify-content:space-between;
+                padding-top:5px;
+            }
+
+            .summary{
+                padding:20px;
+            }
+
+            .footer-main{
+                grid-template-columns:1fr 1fr;
+                padding:40px 20px;
+                gap:30px 20px;
+            }
+
+            .footer-brand{
+                grid-column:1/-1;
+            }
+
+            .footer-middle-content{
+                flex-direction:column;
+            }
+
+            .footer-bottom{
+                flex-direction:column;
+                padding:20px;
+            }
+        }
+
+        @media(max-width:430px){
+            .footer-main{
+                grid-template-columns:1fr;
+            }
+
+            .footer-brand{
+                grid-column:auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="nav-container">
+
+        <a href="index.html" class="logo">
+
+            <img src="assets/dinobuy-logo.png" alt="DinoBuy Logo">
+
+            <div class="logo-text">
+                <span class="logo-main">Dino<span>Buy</span></span>
+                <small>Roar into Better Shopping!</small>
+            </div>
+
+        </a>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#products">Shop</a>
+            <a href="blog.html">Blog</a>
+            <a href="about.html">About</a>
+            <a href="cart.html" class="cart-link">🛒 Cart</a>
+        </div>
+
+    </div>
+
+</nav>
+
+<section class="cart-hero">
+
+    <span class="cart-tag">🛒 Your Shopping Cart</span>
+
+    <h1>Your <span>DinoBuy</span> Cart</h1>
+
+    <p>Review your products before placing your order.</p>
+
+</section>
+
+<main class="cart-container">
+
+    <div id="cartLayout" class="cart-layout">
+
+        <section class="cart-products">
+
+            <div class="cart-header">
+                <h2>Shopping Cart</h2>
+                <span id="itemCount">0 items</span>
+            </div>
+
+            <div id="cartItems"></div>
+
+        </section>
+
+        <aside class="summary">
+
+            <h2>Order Summary</h2>
+
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <strong id="subtotal">₹0</strong>
+            </div>
+
+            <div class="summary-row">
+                <span>Discount</span>
+                <strong id="discount" class="discount-value">-₹0</strong>
+            </div>
+
+            <div class="summary-row">
+                <span>Shipping</span>
+                <strong class="free-shipping">FREE</strong>
+            </div>
+
+            <div class="summary-divider"></div>
+
+            <div class="total-row">
+                <span>Total</span>
+                <strong id="totalPrice" class="total-price">₹0</strong>
+            </div>
+
+            <button class="checkout-btn" id="checkoutBtn">
+                Proceed to Checkout →
+            </button>
+
+            <a href="index.html#products" class="continue-shopping">
+                ← Continue Shopping
+            </a>
+
+            <div class="secure-box">
+                🔒 Secure checkout experience<br>
+                Your shopping information stays protected.
+            </div>
+
+        </aside>
+
+    </div>
+
+    <div id="emptyCart" class="empty-cart">
+
+        <div class="empty-icon">🛒</div>
+
+        <h2>Your cart is empty</h2>
+
+        <p>
+            Looks like you haven't added anything yet.
+            Let's find something you love!
+        </p>
+
+        <a href="index.html#products" class="shop-btn">
+            Start Shopping →
+        </a>
+
+    </div>
+
+</main>
+
+<footer class="site-footer">
+
+    <div class="footer-top">
+        <a href="#" class="back-to-top">Back to top ↑</a>
+    </div>
+
+    <div class="footer-main">
+
+        <div class="footer-column footer-brand">
+
+            <div class="footer-logo">
+
+                <img src="assets/dinobuy-logo.png" alt="DinoBuy Logo">
+
+                <div>
+                    <strong>Dino<span>Buy</span></strong>
+                    <small>Roar into Better Shopping!</small>
+                </div>
+
+            </div>
+
+            <p>
+                Your everyday shopping destination for quality products,
+                great deals and a smooth shopping experience.
+            </p>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h3>Get to Know Us</h3>
+
+            <a href="about.html">About DinoBuy</a>
+            <a href="story.html">Our Story</a>
+            <a href="blog.html">Blog</a>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h3>Connect With Us</h3>
+
+            <a href="#">Instagram</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">GitHub</a>
+            <a href="#">Twitter / X</a>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h3>Shop With Us</h3>
+
+            <a href="index.html#products">All Products</a>
+            <a href="index.html#products">Electronics</a>
+            <a href="index.html#products">Fashion</a>
+            <a href="index.html#products">Footwear</a>
+            <a href="index.html#products">Accessories</a>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h3>Let Us Help You</h3>
+
+            <a href="#">Your Account</a>
+            <a href="cart.html">Your Orders</a>
+            <a href="#">Returns & Refunds</a>
+            <a href="#">Shipping Information</a>
+            <a href="help.html">Help & Support</a>
+
+        </div>
+
+    </div>
+
+    <div class="footer-middle">
+
+        <div class="footer-middle-content">
+
+            <div class="footer-logo-bottom">
+
+                <img src="assets/dinobuy-logo.png" alt="DinoBuy Logo">
+
+                <span>Dino<span>Buy</span></span>
+
+            </div>
+
+            <div class="footer-options">
+                <button>🌐 English</button>
+                <button>🇮🇳 India</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+        <div class="footer-bottom-links">
+            <a href="#">Privacy Notice</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Cookie Policy</a>
+        </div>
+
+        <p>© 2026 DinoBuy. All rights reserved.</p>
+
+    </div>
+
+</footer>
+
+<script>
+
+    const demoProducts = [
+        {
+            id:1,
+            name:"Premium Wireless Headphones",
+            category:"Electronics",
+            price:2499,
+            oldPrice:3499,
+            rating:4.8,
+            image:"🎧",
+            quantity:1
+        },
+        {
+            id:2,
+            name:"Smart Watch Series 5",
+            category:"Electronics",
+            price:3299,
+            oldPrice:4299,
+            rating:4.6,
+            image:"⌚",
+            quantity:1
+        }
+    ];
+
+    let cart = JSON.parse(localStorage.getItem("dinobuyCart")) || [];
+
+    const cartItems = document.getElementById("cartItems");
+    const itemCount = document.getElementById("itemCount");
+    const subtotal = document.getElementById("subtotal");
+    const discount = document.getElementById("discount");
+    const totalPrice = document.getElementById("totalPrice");
+    const cartLayout = document.getElementById("cartLayout");
+    const emptyCart = document.getElementById("emptyCart");
+
+    function formatPrice(price){
+        return `₹${price.toLocaleString("en-IN")}`;
+    }
+
+    function saveCart(){
+        localStorage.setItem("dinobuyCart", JSON.stringify(cart));
+    }
+
+    function renderCart(){
+
+        cartItems.innerHTML = "";
+
+        if(cart.length === 0){
+
+            cartLayout.style.display = "none";
+            emptyCart.style.display = "block";
+
+            itemCount.textContent = "0 items";
+            subtotal.textContent = "₹0";
+            discount.textContent = "-₹0";
+            totalPrice.textContent = "₹0";
+
+            return;
+        }
+
+        cartLayout.style.display = "grid";
+        emptyCart.style.display = "none";
+
+        let totalItems = 0;
+        let subTotal = 0;
+        let oldTotal = 0;
+
+        cart.forEach(product => {
+
+            totalItems += product.quantity;
+
+            subTotal += product.price * product.quantity;
+
+            oldTotal += product.oldPrice * product.quantity;
+
+            const item = document.createElement("div");
+
+            item.className = "cart-item";
+
+            item.innerHTML = `
+
+                <div class="cart-product-image">
+                    ${product.image}
+                </div>
+
+                <div class="cart-product-info">
+
+                    <span class="cart-category">
+                        ${product.category}
+                    </span>
+
+                    <h3>${product.name}</h3>
+
+                    <div class="cart-rating">
+                        ★★★★★ ${product.rating}
+                    </div>
+
+                    <div>
+                        <span class="cart-price">
+                            ${formatPrice(product.price)}
+                        </span>
+
+                        <span class="cart-old-price">
+                            ${formatPrice(product.oldPrice)}
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="cart-actions">
+
+                    <div class="quantity-box">
+
+                        <button
+                            onclick="changeQuantity(${product.id}, -1)">
+                            −
+                        </button>
+
+                        <span>${product.quantity}</span>
+
+                        <button
+                            onclick="changeQuantity(${product.id}, 1)">
+                            +
+                        </button>
+
+                    </div>
+
+                    <button
+                        class="remove-btn"
+                        onclick="removeItem(${product.id})">
+                        Remove
+                    </button>
+
+                </div>
+            `;
+
+            cartItems.appendChild(item);
+
+        });
+
+        const discountAmount = oldTotal - subTotal;
+
+        itemCount.textContent =
+            `${totalItems} ${totalItems === 1 ? "item" : "items"}`;
+
+        subtotal.textContent = formatPrice(subTotal);
+
+        discount.textContent = `-${formatPrice(discountAmount)}`;
+
+        totalPrice.textContent = formatPrice(subTotal);
+
+    }
+
+    function changeQuantity(id, change){
+
+        const product = cart.find(item => item.id === id);
+
+        if(!product) return;
+
+        product.quantity += change;
+
+        if(product.quantity <= 0){
+            cart = cart.filter(item => item.id !== id);
+        }
+
+        saveCart();
+
+        renderCart();
+    }
+
+    function removeItem(id){
+
+        cart = cart.filter(item => item.id !== id);
+
+        saveCart();
+
+        renderCart();
+
+    }
+
+    document.getElementById("checkoutBtn").addEventListener("click", () => {
+
+        if(cart.length === 0){
+            alert("Your DinoBuy cart is empty 🦖");
+            return;
+        }
+
+        alert("Checkout feature coming soon! 🛒");
+
+    });
+
+    renderCart();
+
+</script>
+
+</body>
+</html>

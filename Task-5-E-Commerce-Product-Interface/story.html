@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story | DinoBuy</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        html{
+            scroll-behavior:smooth;
+        }
+
+        body{
+            font-family:Arial, sans-serif;
+            background:#f7faf8;
+            color:#172536;
+        }
+
+        a{
+            text-decoration:none;
+            color:inherit;
+        }
+
+        .navbar{
+            width:100%;
+            background:#ffffff;
+            border-bottom:1px solid #e8eeea;
+            position:sticky;
+            top:0;
+            z-index:100;
+        }
+
+        .nav-container{
+            max-width:1200px;
+            margin:auto;
+            padding:14px 24px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:25px;
+        }
+
+        .logo{
+            display:flex;
+            align-items:center;
+            gap:9px;
+        }
+
+        .logo img{
+            width:48px;
+            height:48px;
+            object-fit:contain;
+        }
+
+        .logo-text{
+            display:flex;
+            flex-direction:column;
+        }
+
+        .logo-main{
+            font-size:21px;
+            font-weight:800;
+            color:#111827;
+        }
+
+        .logo-main span{
+            color:#16a34a;
+        }
+
+        .logo-text small{
+            font-size:7px;
+            color:#7d8b84;
+            margin-top:3px;
+        }
+
+        .nav-links{
+            display:flex;
+            align-items:center;
+            gap:28px;
+            font-size:14px;
+            font-weight:600;
+        }
+
+        .nav-links a{
+            color:#44504a;
+            transition:.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active{
+            color:#16a34a;
+        }
+
+        .cart-link{
+            background:#16a34a;
+            color:#fff !important;
+            padding:10px 17px;
+            border-radius:9px;
+        }
+
+        .story-hero{
+            min-height:470px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            text-align:center;
+            padding:80px 20px;
+            background:linear-gradient(135deg,#effaf2,#f7faf8);
+        }
+
+        .story-hero-content{
+            max-width:800px;
+        }
+
+        .story-tag{
+            display:inline-block;
+            padding:7px 15px;
+            border-radius:30px;
+            background:#dcfce7;
+            color:#15803d;
+            font-size:13px;
+            font-weight:700;
+            margin-bottom:20px;
+        }
+
+        .story-hero h1{
+            font-size:52px;
+            line-height:1.08;
+            margin-bottom:20px;
+            color:#172536;
+        }
+
+        .story-hero h1 span{
+            color:#16a34a;
+        }
+
+        .story-hero p{
+            max-width:650px;
+            margin:auto;
+            color:#66736c;
+            font-size:17px;
+            line-height:1.8;
+        }
+
+        .story-section{
+            max-width:1100px;
+            margin:auto;
+            padding:85px 25px;
+        }
+
+        .story-grid{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:55px;
+            align-items:center;
+        }
+
+        .story-content h2{
+            font-size:34px;
+            margin-bottom:18px;
+        }
+
+        .story-content h2 span{
+            color:#16a34a;
+        }
+
+        .story-content p{
+            color:#657169;
+            line-height:1.8;
+            margin-bottom:16px;
+            font-size:15px;
+        }
+
+        .story-card{
+            background:#ffffff;
+            border-radius:24px;
+            padding:45px;
+            box-shadow:0 18px 45px rgba(24,65,40,.08);
+            border:1px solid #edf2ee;
+        }
+
+        .story-card-icon{
+            width:75px;
+            height:75px;
+            border-radius:20px;
+            background:#dcfce7;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:38px;
+            margin-bottom:22px;
+        }
+
+        .story-card h3{
+            font-size:23px;
+            margin-bottom:12px;
+        }
+
+        .story-card p{
+            color:#68746d;
+            line-height:1.7;
+            font-size:14px;
+        }
+
+        .timeline-section{
+            background:#ffffff;
+            padding:80px 25px;
+        }
+
+        .section-heading{
+            text-align:center;
+            max-width:700px;
+            margin:0 auto 55px;
+        }
+
+        .section-heading h2{
+            font-size:35px;
+            margin-bottom:12px;
+        }
+
+        .section-heading h2 span{
+            color:#16a34a;
+        }
+
+        .section-heading p{
+            color:#6c7771;
+            line-height:1.7;
+        }
+
+        .timeline{
+            max-width:900px;
+            margin:auto;
+            position:relative;
+        }
+
+        .timeline::before{
+            content:"";
+            position:absolute;
+            left:50%;
+            top:0;
+            bottom:0;
+            width:2px;
+            background:#d9e7dd;
+            transform:translateX(-50%);
+        }
+
+        .timeline-item{
+            width:50%;
+            padding:15px 40px;
+            position:relative;
+        }
+
+        .timeline-item:nth-child(odd){
+            text-align:right;
+        }
+
+        .timeline-item:nth-child(even){
+            margin-left:50%;
+        }
+
+        .timeline-dot{
+            position:absolute;
+            top:25px;
+            width:14px;
+            height:14px;
+            border-radius:50%;
+            background:#16a34a;
+            border:3px solid #dcfce7;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot{
+            right:-7px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot{
+            left:-7px;
+        }
+
+        .timeline-item h3{
+            font-size:20px;
+            margin-bottom:8px;
+        }
+
+        .timeline-item span{
+            color:#16a34a;
+            font-size:13px;
+            font-weight:700;
+        }
+
+        .timeline-item p{
+            color:#68746d;
+            font-size:14px;
+            line-height:1.7;
+            margin-top:8px;
+        }
+
+        .mission{
+            max-width:900px;
+            margin:auto;
+            padding:80px 25px;
+            text-align:center;
+        }
+
+        .mission-box{
+            background:#172536;
+            color:#fff;
+            border-radius:25px;
+            padding:55px 35px;
+        }
+
+        .mission-box h2{
+            font-size:34px;
+            margin-bottom:18px;
+        }
+
+        .mission-box h2 span{
+            color:#4ade80;
+        }
+
+        .mission-box p{
+            max-width:650px;
+            margin:auto;
+            color:#cbd5d0;
+            line-height:1.8;
+            font-size:15px;
+        }
+
+        .story-cta{
+            text-align:center;
+            padding:20px 25px 85px;
+        }
+
+        .story-cta h2{
+            font-size:30px;
+            margin-bottom:12px;
+        }
+
+        .story-cta p{
+            color:#69756e;
+            margin-bottom:25px;
+        }
+
+        .shop-btn{
+            display:inline-block;
+            background:#16a34a;
+            color:#fff;
+            padding:13px 24px;
+            border-radius:10px;
+            font-weight:700;
+        }
+
+        .site-footer{
+            background:#172536;
+            color:#dce5df;
+        }
+
+        .footer-top{
+            text-align:center;
+            border-bottom:1px solid rgba(255,255,255,.08);
+        }
+
+        .back-to-top{
+            display:block;
+            padding:16px;
+            color:#fff;
+            font-size:13px;
+        }
+
+        .footer-main{
+            max-width:1200px;
+            margin:auto;
+            padding:55px 25px;
+            display:grid;
+            grid-template-columns:1.5fr repeat(4,1fr);
+            gap:35px;
+        }
+
+        .footer-logo{
+            display:flex;
+            align-items:center;
+            gap:10px;
+            margin-bottom:15px;
+        }
+
+        .footer-logo img{
+            width:45px;
+            height:45px;
+            object-fit:contain;
+        }
+
+        .footer-logo strong{
+            display:block;
+            font-size:21px;
+            color:#fff;
+        }
+
+        .footer-logo strong span{
+            color:#4ade80;
+        }
+
+        .footer-logo small{
+            font-size:8px;
+            color:#9ba9a2;
+        }
+
+        .footer-brand p{
+            color:#9ba9a2;
+            font-size:13px;
+            line-height:1.7;
+            max-width:250px;
+        }
+
+        .footer-column{
+            display:flex;
+            flex-direction:column;
+            gap:11px;
+        }
+
+        .footer-column h3{
+            color:#fff;
+            font-size:14px;
+            margin-bottom:8px;
+        }
+
+        .footer-column a{
+            color:#9ba9a2;
+            font-size:13px;
+            transition:.2s;
+        }
+
+        .footer-column a:hover{
+            color:#4ade80;
+        }
+
+        .footer-middle{
+            border-top:1px solid rgba(255,255,255,.08);
+            border-bottom:1px solid rgba(255,255,255,.08);
+        }
+
+        .footer-middle-content{
+            max-width:1200px;
+            margin:auto;
+            padding:25px;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            gap:25px;
+        }
+
+        .footer-logo-bottom{
+            display:flex;
+            align-items:center;
+            gap:9px;
+        }
+
+        .footer-logo-bottom img{
+            width:40px;
+            height:40px;
+            object-fit:contain;
+        }
+
+        .footer-logo-bottom span{
+            font-size:20px;
+            font-weight:800;
+            color:#fff;
+        }
+
+        .footer-logo-bottom span span{
+            color:#4ade80;
+        }
+
+        .footer-options{
+            display:flex;
+            gap:10px;
+        }
+
+        .footer-options button{
+            background:transparent;
+            color:#dce5df;
+            border:1px solid #42504b;
+            padding:9px 15px;
+            border-radius:7px;
+        }
+
+        .footer-bottom{
+            max-width:1200px;
+            margin:auto;
+            padding:22px 25px;
+            display:flex;
+            justify-content:space-between;
+            gap:20px;
+            flex-wrap:wrap;
+        }
+
+        .footer-bottom-links{
+            display:flex;
+            gap:18px;
+            flex-wrap:wrap;
+        }
+
+        .footer-bottom a,
+        .footer-bottom p{
+            color:#8e9b95;
+            font-size:11px;
+        }
+
+        @media(max-width:850px){
+            .nav-links{
+                gap:15px;
+            }
+
+            .story-grid{
+                grid-template-columns:1fr;
+            }
+
+            .footer-main{
+                grid-template-columns:repeat(2,1fr);
+            }
+
+            .footer-brand{
+                grid-column:1/-1;
+            }
+        }
+
+        @media(max-width:650px){
+            .nav-container{
+                padding:12px 16px;
+            }
+
+            .nav-links{
+                gap:10px;
+                font-size:12px;
+            }
+
+            .logo img{
+                width:42px;
+                height:42px;
+            }
+
+            .logo-main{
+                font-size:18px;
+            }
+
+            .logo-text small{
+                display:none;
+            }
+
+            .cart-link{
+                padding:8px 11px;
+            }
+
+            .story-hero{
+                min-height:420px;
+                padding:60px 20px;
+            }
+
+            .story-hero h1{
+                font-size:38px;
+            }
+
+            .story-hero p{
+                font-size:15px;
+            }
+
+            .story-section{
+                padding:60px 20px;
+            }
+
+            .story-content h2{
+                font-size:28px;
+            }
+
+            .story-card{
+                padding:30px;
+            }
+
+            .timeline-section{
+                padding:60px 20px;
+            }
+
+            .section-heading h2{
+                font-size:28px;
+            }
+
+            .timeline::before{
+                left:7px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(even){
+                width:100%;
+                margin-left:0;
+                padding:15px 15px 25px 35px;
+                text-align:left;
+            }
+
+            .timeline-item:nth-child(odd){
+                text-align:left;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-dot,
+            .timeline-item:nth-child(even) .timeline-dot{
+                left:0;
+                right:auto;
+            }
+
+            .mission{
+                padding:60px 20px;
+            }
+
+            .mission-box{
+                padding:40px 25px;
+            }
+
+            .mission-box h2{
+                font-size:28px;
+            }
+
+            .footer-main{
+                grid-template-columns:1fr 1fr;
+                padding:40px 20px;
+                gap:30px 20px;
+            }
+
+            .footer-brand{
+                grid-column:1/-1;
+            }
+
+            .footer-middle-content{
+                flex-direction:column;
+            }
+
+            .footer-bottom{
+                flex-direction:column;
+                padding:20px;
+            }
+        }
+
+        @media(max-width:430px){
+            .nav-links a:not(.cart-link){
+                display:none;
+            }
+
+            .footer-main{
+                grid-template-columns:1fr;
+            }
+
+            .footer-brand{
+                grid-column:auto;
+            }
+
+            .footer-options{
+                width:100%;
+                justify-content:center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="nav-container">
+
+        <a href="index.html" class="logo">
+            <img src="assets/dinobuy-logo.png" alt="DinoBuy Logo">
+
+            <div class="logo-text">
+                <span class="logo-main">Dino<span>Buy</span></span>
+                <small>Roar into Better Shopping!</small>
+            </div>
+        </a>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#products">Shop</a>
+            <a href="blog.html">Blog</a>
+            <a href="about.html">About</a>
+            <a href="cart.html" class="cart-link">🛒 Cart</a>
+        </div>
+
+    </div>
+</nav>
+
+<section class="story-hero">
+    <div class="story-hero-content">
+        <span class="story-tag">🦖 The DinoBuy Story</span>
+
+        <h1>
+            From a simple idea to a
+            <span>better way to shop.</span>
+        </h1>
+
+        <p>
+            DinoBuy started with one simple thought — online shopping
+            should feel easy, enjoyable and trustworthy. So we created
+            a place where finding great products doesn't have to be complicated.
+        </p>
+    </div>
+</section>
+
+<section class="story-section">
+
+    <div class="story-grid">
+
+        <div class="story-content">
+            <h2>How <span>DinoBuy</span> Started</h2>
+
+            <p>
+                DinoBuy began as a small idea focused on making everyday
+                online shopping simpler. Instead of overwhelming shoppers
+                with complicated interfaces, we wanted to create a clean
+                experience where products are easy to discover.
+            </p>
+
+            <p>
+                From electronics and fashion to footwear and accessories,
+                DinoBuy brings different categories together in one
+                friendly shopping experience.
+            </p>
+
+            <p>
+                The dinosaur became our little symbol of that journey —
+                curious, bold and always ready to explore something new.
+            </p>
+        </div>
+
+        <div class="story-card">
+            <div class="story-card-icon">🦖</div>
+
+            <h3>Small Idea. Big Roar.</h3>
+
+            <p>
+                We believe great shopping experiences don't need to be
+                complicated. They need thoughtful design, useful products,
+                clear information and a little personality.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="timeline-section">
+
+    <div class="section-heading">
+        <h2>Our <span>Journey</span></h2>
+        <p>
+            Every big idea starts somewhere. Here's the fictional journey
+            behind DinoBuy.
+        </p>
+    </div>
+
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <span>2023</span>
+            <h3>The Idea</h3>
+            <p>
+                DinoBuy began with the idea of creating a cleaner,
+                simpler online shopping experience.
+            </p>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <span>2024</span>
+            <h3>Building the Experience</h3>
+            <p>
+                Product discovery, category browsing and a smoother
+                interface became the focus.
+            </p>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <span>2025</span>
+            <h3>Growing the Catalog</h3>
+            <p>
+                More product categories and shopping features were
+                introduced to make DinoBuy more useful.
+            </p>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <span>2026</span>
+            <h3>DinoBuy Today</h3>
+            <p>
+                A modern shopping concept focused on simplicity,
+                usability and a fun shopping identity.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="mission">
+
+    <div class="mission-box">
+        <h2>Our mission is <span>simple.</span></h2>
+
+        <p>
+            Make online shopping easier to explore, easier to understand
+            and a little more enjoyable. Whether you're looking for
+            everyday essentials or something new, DinoBuy wants the
+            experience to feel effortless.
+        </p>
+    </div>
+
+</section>
+
+<section class="story-cta">
+
+    <h2>Ready to explore DinoBuy?</h2>
+
+    <p>Discover products picked for a simple and enjoyable shopping experience.</p>
+
+    <a href="index.html#products" class="shop-btn">Explore Products →</a>
+
+</section>
+
+<footer class="site-footer">
+
+    <div class="footer-top">
+        <a href="#" class="back-to-top">Back to top ↑</a>
+    </div>
+
+    <div class="footer-main">
+
+        <div class="footer-column footer-brand">
+
+            <div class="footer-logo">
+                <img src="assets/dinobuy-logo.png" alt="DinoBuy Logo">
+
+                <div>
+                    <strong>Dino<span>Buy</span></strong>
+                    <small>Roar into Better Shopping!</small>
+                </div>
+            </div>
+
+            <p>
+                Your everyday shopping destination for quality products,
+                great deals and a smooth shopping experience.
+            </p>
+
+        </div>
+
+        <div class="footer-column">
+            <h3>Get to Know Us</h3>
+            <a href="about.html">About DinoBuy</a>
+            <a href="story.html">Our Story</a>
+            <a href="blog.html">Blog</a>
+        </div>
+
+        <div class="footer-column">
+            <h3>Connect With Us</h3>
+            <a href="#">Instagram</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">GitHub</a>
+            <a href="#">Twitter / X</a>
+        </div>
+
+        <div class="footer-column">
+            <h3>Shop With Us</h3>
+            <a href="index.html#products">All Products</a>
+            <a href="index.html#products">Electronics</a>
+            <a href="index.html#products">Fashion</a>
+            <a href="index.html#products">Footwear</a>
+            <a href="index.html#products">Accessories</a>
+        </div>
+
+        <div class="footer-column">
+            <h3>Let Us Help You</h3>
+            <a href="#">Your Account</a>
+            <a href="cart.html">Your Orders</a>
+            <a href="#">Returns & Refunds</a>
+            <a href="#">Shipping Information</a>
+            <a href="help.html">Help & Support</a>
+        </div>
+
+    </div>
+
+    <div class="footer-middle">
+
+        <div class="footer-middle-content">
+
+            <div class="footer-logo-bottom">
+                <img src="assets/dinobuy-logo.png" alt="DinoBuy Logo">
+                <span>Dino<span>Buy</span></span>
+            </div>
+
+            <div class="footer-options">
+                <button>🌐 English</button>
+                <button>🇮🇳 India</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+        <div class="footer-bottom-links">
+            <a href="#">Privacy Notice</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Cookie Policy</a>
+        </div>
+
+        <p>© 2026 DinoBuy. All rights reserved.</p>
+
+    </div>
+
+</footer>
+
+</body>
+</html>

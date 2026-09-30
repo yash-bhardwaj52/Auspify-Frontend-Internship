@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="A modern responsive weather dashboard using OpenWeather API."
+    >
+
+    <title>Weather Dashboard | Yash Bhardwaj</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Background Decorative Elements -->
+    <div class="background-circle circle-one"></div>
+    <div class="background-circle circle-two"></div>
+
+    <main class="container">
+
+        <!-- Header -->
+        <header class="header">
+            <div>
+                <p class="small-title">LIVE WEATHER</p>
+                <h1>Weather Dashboard</h1>
+                <p class="subtitle">
+                    Search any city and get real-time weather information.
+                </p>
+            </div>
+        </header>
+
+
+        <!-- Search Section -->
+        <section class="search-section">
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    id="cityInput"
+                    placeholder="Enter city name..."
+                    autocomplete="off"
+                >
+
+                <button id="searchBtn">
+                    Search
+                </button>
+
+            </div>
+
+            <p id="errorMessage" class="error-message"></p>
+
+        </section>
+
+
+        <!-- Loading -->
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Fetching weather data...</p>
+        </div>
+
+
+        <!-- Welcome Message -->
+        <section id="welcomeMessage" class="welcome-message">
+
+            <div class="welcome-icon">🌤️</div>
+
+            <h2>Check the Weather</h2>
+
+            <p>
+                Enter a city name above to see current temperature,
+                humidity, wind speed and more.
+            </p>
+
+        </section>
+
+
+        <!-- Weather Card -->
+        <section id="weatherCard" class="weather-card hidden">
+
+            <!-- Main Weather -->
+            <div class="weather-main">
+
+                <p class="location-label">CURRENT WEATHER</p>
+
+                <h2 id="cityName">Delhi, IN</h2>
+
+                <!-- Weather Icon -->
+                <img
+                    id="weatherIcon"
+                    class="weather-icon"
+                    src=""
+                    alt="Weather Icon"
+                >
+
+                <p id="weatherDescription" class="weather-description">
+                    Clear Sky
+                </p>
+
+                <div class="temperature">
+                    <span id="temperature">--</span>
+                    <span class="degree">°C</span>
+                </div>
+
+                <p class="feels-text">
+                    Feels like
+                    <strong>
+                        <span id="feelsLike">--</span>°C
+                    </strong>
+                </p>
+
+            </div>
+
+
+            <!-- Weather Details -->
+            <div class="details-section">
+
+                <h3>Weather Details</h3>
+
+                <div class="details-grid">
+
+                    <!-- Humidity -->
+                    <div class="detail-card">
+
+                        <div class="detail-icon">💧</div>
+
+                        <div>
+                            <p class="detail-label">Humidity</p>
+                            <p id="humidity" class="detail-value">--%</p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Wind -->
+                    <div class="detail-card">
+
+                        <div class="detail-icon">💨</div>
+
+                        <div>
+                            <p class="detail-label">Wind Speed</p>
+                            <p id="windSpeed" class="detail-value">-- m/s</p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Pressure -->
+                    <div class="detail-card">
+
+                        <div class="detail-icon">🌡️</div>
+
+                        <div>
+                            <p class="detail-label">Pressure</p>
+                            <p id="pressure" class="detail-value">-- hPa</p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Visibility -->
+                    <div class="detail-card">
+
+                        <div class="detail-icon">👁️</div>
+
+                        <div>
+                            <p class="detail-label">Visibility</p>
+                            <p id="visibility" class="detail-value">-- km</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Footer -->
+        <footer class="footer">
+
+
+            <p>
+                © 2026 Yash Bhardwaj
+            </p>
+
+        </footer>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DinoBuy | Roar into Better Shopping</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="nav-container">
+        <a href="#home" class="logo">
+    <img src="assets/dinobuy-logo.png" alt="DinoBuy Logo">
+    <div class="logo-text">
+        <span class="logo-main">Dino<span>Buy</span></span>
+        <small>Roar into Better Shopping!</small>
+    </div>
+</a>
+        <nav class="nav-links">
+
+            <a href="#home" class="active">
+                Home
+            </a>
+            <a href="#products">
+                Products
+            </a>
+            <a href="blog.html">Blog</a>
+            <a href="about.html">About</a>
+
+            <a href="#categories">
+                Categories
+            </a>
+
+        </nav>
+
+
+        <div class="nav-actions">
+
+            <div class="nav-search">
+
+                <span>⌕</span>
+
+                <input
+                    type="text"
+                    id="navSearch"
+                    placeholder="Search for products..."
+                >
+
+            </div>
+
+<a href="wishlist.html" class="wishlist-nav-btn" aria-label="Wishlist">
+    <button
+        class="icon-btn"
+        id="wishlistBtn"
+        title="Wishlist"
+    >    
+        ♡
+    </button>
+</a>
+
+
+            <button
+                class="cart-btn"
+                id="cartBtn"
+            >
+            <a href="cart.html"></a>
+                🛒
+
+                <span>Cart</span>
+
+                <b id="cartCount">0</b>
+
+            </button>
+
+        </div>
+
+
+        <button
+            class="menu-btn"
+            id="menuBtn"
+        >
+            ☰
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-circle circle-one"></div>
+    <div class="hero-circle circle-two"></div>
+
+
+    <div class="hero-container">
+
+
+        <!-- HERO CONTENT -->
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+
+                <span class="badge-icon">🔥</span>
+
+                <span>Hot Deals</span>
+
+                <i></i>
+
+                <span>Up to 50% Off</span>
+
+            </div>
+
+
+            <h1>
+                Shop Smarter.
+                <span>Roar Louder.</span>
+            </h1>
+
+
+            <p class="hero-description">
+
+                Discover trending products, exclusive deals
+                and everyday essentials — all in one place.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a
+                    href="#products"
+                    class="hero-btn"
+                >
+                    Explore Products
+                    <span>→</span>
+                </a>
+
+
+                <a
+                    href="#categories"
+                    class="secondary-btn"
+                >
+                    View Categories
+                </a>
+
+            </div>
+
+
+            <div class="hero-features">
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        ✓
+                    </div>
+
+                    <div>
+                        <strong>Secure</strong>
+                        <small>Payments</small>
+                    </div>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        🚚
+                    </div>
+
+                    <div>
+                        <strong>Fast</strong>
+                        <small>Delivery</small>
+                    </div>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        ★
+                    </div>
+
+                    <div>
+                        <strong>Top</strong>
+                        <small>Quality</small>
+                    </div>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        ♧
+                    </div>
+
+                    <div>
+                        <strong>24/7</strong>
+                        <small>Support</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- HERO IMAGE -->
+
+        <div class="hero-visual">
+
+            <div class="visual-glow"></div>
+
+            <div class="visual-circle"></div>
+
+
+            <div class="dino-image-wrapper">
+
+                <img
+                    src="assets/dino-img.png"
+                    alt="DinoBuy shopping dinosaur"
+                    class="dino-image"
+                >
+
+            </div>
+
+
+            <div class="floating-card discount-card">
+
+                <span class="floating-icon">
+                    🔥
+                </span>
+
+                <div>
+
+                    <strong>50% OFF</strong>
+
+                    <small>Selected Items</small>
+
+                </div>
+
+            </div>
+
+
+            <div class="floating-card delivery-card">
+
+                <span class="floating-icon">
+                    🚚
+                </span>
+
+                <div>
+
+                    <strong>Free Delivery</strong>
+
+                    <small>On orders ₹999+</small>
+
+                </div>
+
+            </div>
+
+
+            <div class="dino-bubble">
+
+                <span>🦖</span>
+
+                <div>
+
+                    <strong>Roar!</strong>
+
+                    <small>Great deals ahead</small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PRODUCTS ================= -->
+
+<section 
+    class="products-section" 
+    id="products"
+>
+
+    <div class="container">
+
+        <div 
+            class="section-heading" 
+            id="categories"
+        >
+
+            <div>
+
+                <span class="section-tag">
+                    🦖 Dino Collection
+                </span>
+
+                <h2>
+                    Explore Our Products
+                </h2>
+
+            </div>
+
+            <p id="productCount">
+                16 Products
+            </p>
+
+        </div>
+
+
+        <!-- FILTERS -->
+
+        <div class="filters">
+
+            <div class="search-box">
+
+                <span>⌕</span>
+
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Search products..."
+                >
+
+            </div>
+
+
+            <select id="categoryFilter">
+
+                <option value="all">
+                    All Categories
+                </option>
+
+                <option value="electronics">
+                    Electronics
+                </option>
+
+                <option value="fashion">
+                    Fashion
+                </option>
+
+                <option value="footwear">
+                    Footwear
+                </option>
+
+                <option value="accessories">
+                    Accessories
+                </option>
+
+            </select>
+
+
+            <select id="sortFilter">
+
+                <option value="default">
+                    Sort By
+                </option>
+
+                <option value="price-low">
+                    Price: Low to High
+                </option>
+
+                <option value="price-high">
+                    Price: High to Low
+                </option>
+
+                <option value="rating">
+                    Highest Rating
+                </option>
+
+                <option value="discount">
+                    Biggest Discount
+                </option>
+
+            </select>
+
+
+            <button 
+                id="resetBtn" 
+                class="reset-btn"
+            >
+                Reset
+            </button>
+
+        </div>
+
+
+        <!-- PRODUCTS -->
+
+        <div 
+            class="product-grid" 
+            id="productGrid"
+        ></div>
+
+
+        <!-- SEE MORE -->
+
+        <div class="see-more-wrapper">
+
+            <button 
+                id="seeMoreBtn" 
+                class="see-more-btn"
+            >
+                See More Products →
+            </button>
+
+        </div>
+
+
+        <!-- NO RESULTS -->
+
+        <div 
+            class="no-results" 
+            id="noResults"
+        >
+
+            <span>🦖</span>
+
+            <h3>
+                No products found
+            </h3>
+
+            <p>
+                Try another search or category.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+<footer class="site-footer" id="footer">
+
+    <div class="footer-top">
+        <a href="#home" class="back-to-top">Back to top ↑</a>
+    </div>
+
+    <div class="footer-main">
+        <div class="footer-column footer-brand">
+            <div class="footer-logo">
+                <img src="assets/dinobuy-logo.png" alt="DinoBuy Logo">
+                <div>
+                    <strong>Dino<span>Buy</span></strong>
+                    <small>Roar into Better Shopping!</small>
+                </div>
+            </div>
+            <p>
+                Your everyday shopping destination for quality products,
+                great deals and a smooth shopping experience.
+            </p>
+        </div>
+
+        <div class="footer-column">
+            <h3>Get to Know Us</h3>
+            <a href="about.html">About DinoBuy</a>
+            <a href="story.html">Our Story</a>
+            <a href="blog.html">Blog</a>
+        </div>
+
+        <div class="footer-column">
+            <h3>Connect With Us</h3>
+            <a href="#">Instagram</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">GitHub</a>
+            <a href="#">Twitter / X</a>
+        </div>
+
+        <div class="footer-column">
+            <h3>Shop With Us</h3>
+            <a href="#products">All Products</a>
+            <a href="#products">Electronics</a>
+            <a href="#products">Fashion</a>
+            <a href="#products">Footwear</a>
+            <a href="#products">Accessories</a>
+        </div>
+
+        <div class="footer-column">
+            <h3>Let Us Help You</h3>
+            <a href="#">Your Account</a>
+            <a href="#">Your Orders</a>
+            <a href="#">Returns & Refunds</a>
+            <a href="#">Shipping Information</a>
+            <a href="#">Help & Support</a>
+        </div>
+    </div>
+
+    <div class="footer-middle">
+        <div class="footer-middle-content">
+            <div class="footer-logo-bottom">
+                <img src="assets/dinobuy-logo.png" alt="DinoBuy Logo">
+                <span>Dino<span>Buy</span></span>
+            </div>
+
+            <div class="footer-options">
+                <button>🌐 English</button>
+                <button>🇮🇳 India</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="footer-bottom-links">
+            <a href="#">Privacy Notice</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Cookie Policy</a>
+        </div>
+
+        <p>© 2026 DinoBuy. All rights reserved.</p>
+    </div>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
